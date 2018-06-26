@@ -1,0 +1,22 @@
+{% extends 'polls/index.html' %}
+
+{% block title %}Detail of Question {{question.id}} {%endblock %}
+
+{%block content %}
+
+<h3 style = "color:red;">{{question.question_text}}</h3>
+{% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
+
+<form action = "{% url 'polls:vote' question.id %}" method = "post">
+    {% csrf_token %}
+    {% for choice in choices %}
+        <input type = "radio" name="choice" id = "choice{{forloop.counter}}" value ="{{choice.id}}"/>
+        <label for = "choice{{ forloop.counter }}">{{choice.choice_text}}</label><br>
+    {% endfor %}
+    <input class = "btn btn-success" type = "submit" value = "Vote Now"/>
+
+</form>
+
+
+
+{%endblock %}
