@@ -34,13 +34,23 @@
         {% endblock %}
 
     </div>
-    
 
+    {% block css %}
+    {% endblock %}
+    
+    
     <script>
         function goHome(){
             window.location = "{% url 'polls:index' %}"
         }
+
     </script>
+
+    {% block js %}
+    {% endblock %}
+
+
     
+
 </body>
 </html>
