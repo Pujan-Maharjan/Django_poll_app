@@ -1,0 +1,23 @@
+{% extends 'polls/index.html' %}
+{%block title%}poll results{% endblock %}
+
+{%block content%}
+<h1>Results for question {{question.id}}</h1>
+<ul>
+    {% for choice in question.choice_set.all %}
+    <li>{{choice.choice_text}}--->{{choice.votes}} vote{{choice.votes|pluralize}}</li>
+    {% endfor %}
+</ul>
+
+<button class="btn btn-secondary" onclick="goToDetails()">Vote Again</button>
+
+{% endblock %}
+
+{%block js%}
+    <script>
+        function goToDetails(){
+            window.location = "{% url 'polls:detail' question.id %}"
+        }
+    </script>
+
+{%endblock%}
