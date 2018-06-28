@@ -8,10 +8,16 @@
     
     <form action = "{% url 'polls:vote' question.id %}" method = "post">
         {% csrf_token %}
+        {%if question.choice_set.all %}
+
         {% for choice in question.choice_set.all %}
             <input type = "radio" name="choice" id = "choice{{forloop.counter}}" value ="{{choice.id}}"/>
             <label for = "choice{{ forloop.counter }}">{{choice.choice_text}}</label><br>
         {% endfor %}
+
+        {%else %}
+        <p class = "text-info">Sorry!! choices are not available yet for this question</p>
+        {%endif %}
         <input class = "btn btn-success" type = "submit" value = "Vote Now"/>
         {% if error_message %}<p class="poll-error" ><strong>{{error_message}}</strong></p>{% endif %}
     </form>
