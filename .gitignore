@@ -36,4 +36,4 @@ var/
 
 ###project static image directories###
 
-/mysite/**/images/
+/**/images/
