@@ -32,3 +32,8 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+
+###project static image directories###
+
+/mysite/**/images/
